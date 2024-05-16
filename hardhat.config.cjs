@@ -1,5 +1,9 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("hardhat-deploy");
+require("dotenv").config();
+
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const INFURA_SEPOLIA_URL = process.env.INFURA_SEPOLIA_URL;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -10,8 +14,8 @@ module.exports = {
     },
     sepolia: {
       chainId: 11155111,
-      accounts: [], // Insert private Key
-      url: "", // Insert INFURA Sepolia URL
+      accounts: [`0x${PRIVATE_KEY}`], // Insert private Key
+      url: INFURA_SEPOLIA_URL, // Insert INFURA Sepolia URL
     },
   },
   namedAccounts: {
